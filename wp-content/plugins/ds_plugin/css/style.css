@@ -1,0 +1,25 @@
+.ds-panel {
+    position: fixed;
+    top:3%;
+    left:50%;
+    /*background: #0073aa;*/
+    z-index: 10;
+    align: right;
+}
+.ds-button {
+    font-size: 8pt;
+    margin: 5px;
+}
+.ds-form {
+    position: absolute;
+    top:10px;
+    /*left:30%;*/
+    background: #0073aa;
+    padding: 15px;
+    display: none;
+    box-shadow: 0 0 5px 1px;
+    /*width: 30%;*/
+}
+.ds-input {
+    font-size: 12pt;
+}
