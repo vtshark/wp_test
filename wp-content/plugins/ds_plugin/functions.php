@@ -17,18 +17,23 @@ function ds_scripts() {
         array("jquery"),null,true);
 
     wp_enqueue_style("ds_style",plugins_url("/css/style.css",__FILE__),null,null);
+
+    wp_localize_script("ds_scripts","ds_obj",['url_ajax'=> admin_url('admin-ajax.php'),
+                                            'url_root'=> site_url()]);
 }
-function login() {
+
+function ds_login() {
     if (isset($_POST['login'])) {
 
         $arr = [];
         $arr['user_login'] = $_POST['login'];
-        $arr['user_password'] = $_POST['password'];
+        $arr['user_password'] = $_POST['pass'];
         $arr['remember'] = false;
 
         $user = wp_signon( $arr, false );
 
-        if ( is_wp_error($user) )
-            echo $user->get_error_message();
+        echo is_wp_error($user) ? $user->get_error_message() : 0;
     }
+
+    wp_die();
 }

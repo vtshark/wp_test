@@ -1,21 +1,48 @@
 jQuery(document).ready(function($) {
 
     function showLoginForm(m) {
+        $("#ds-error").html("");
         $("#ds-form-reg").fadeOut();
         if (m) {
-            $("#ds-form-login").fadeIn("slow");
+            $("#ds-form-login").fadeIn(100);
         } else {
-            $("#ds-form-login").fadeOut("slow");
+            $("#ds-form-login").fadeOut(100);
         }
     }
 
     function showRegForm(m) {
+        //$("#ds-error").html("");
         $("#ds-form-login").fadeOut();
         if (m) {
-            $("#ds-form-reg").fadeIn("slow");
+            $("#ds-form-reg").fadeIn(100);
         } else {
-            $("#ds-form-reg").fadeOut("slow");
+            $("#ds-form-reg").fadeOut(100);
         }
+    }
+    function showErrorLogin(str) {
+        $("#ds-error").html(str);
+    }
+    function loginFun() {
+        $.ajax({
+           type: 'POST',
+            url:ds_obj.url_ajax,
+            data: {
+                login: $("#ds-login").val(),
+                pass: $("#ds-password").val(),
+                action: 'ds_login'
+            },
+            success: function(res) {
+                //console.log(res);
+                if (res!="0") {
+                    showErrorLogin(res);
+                } else {
+                    location = ds_obj.url_root;
+                }
+            },
+            error: function() {
+                alert('ошибка');
+            }
+        });
     }
 
     $(".ds-button").click(function(e){
@@ -30,7 +57,7 @@ jQuery(document).ready(function($) {
                 break;
             //  авторизировать
             case "ds-form-login-signin":
-
+                loginFun();
                 break;
 
             //  показать / закрыть форму регистрации
@@ -40,8 +67,6 @@ jQuery(document).ready(function($) {
             case "ds-close-form-reg":
                 showRegForm(0);
                 break;
-
-
 
             case "ds-signOut":
                 break;
