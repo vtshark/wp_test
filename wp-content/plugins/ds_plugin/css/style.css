@@ -2,7 +2,6 @@
     position: fixed;
     top:3%;
     left:50%;
-    /*background: #0073aa;*/
     z-index: 10;
     align: right;
 }
@@ -11,16 +10,17 @@
     margin: 5px;
 }
 .ds-form {
-    position: absolute;
-    top:10px;
-    /*left:30%;*/
+    position: fixed;
+    top:10%;
+    left:30%;
     background: #0073aa;
     padding: 15px;
     display: none;
     box-shadow: 0 0 5px 1px;
     border-radius: 3px;
     z-index: 10;
-    width: 50%;
+    width: 30%;
+    color: #ffffff;
 }
 .ds-input {
     font-size: 12pt;
